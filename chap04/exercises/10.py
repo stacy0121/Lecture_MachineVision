@@ -10,7 +10,7 @@ def onMouse(event, x, y, flags, param):
 
 image = np.full((300, 500), 255, np.uint8)
 
-title = "exercises_11"
+title = "exercises_10"
 cv2.imshow(title, image)
 
 cv2.setMouseCallback(title, onMouse)
