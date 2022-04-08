@@ -10,7 +10,7 @@ cv2.waitKey()
 cv2.destroyAllWindows()
 
 # 부분 영상 추출
-img1 = cv2.imread('images_ch05/flowers.jpg')
+img1 = cv2.imread('exercises/images_ch05/flowers.jpg')
 img2 = img1[140:220, 130:250]
 img3 = img1[140:220, 130:250].copy()
 

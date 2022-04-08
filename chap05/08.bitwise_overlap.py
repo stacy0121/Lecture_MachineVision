@@ -1,7 +1,7 @@
 import numpy as np, cv2
 
-image = cv2.imread("images_ch05/bit_test.jpg", cv2.IMREAD_COLOR)
-logo = cv2.imread("images_ch05/logo.jpg", cv2.IMREAD_COLOR)
+image = cv2.imread("exercises/images_ch05/bit_test.jpg", cv2.IMREAD_COLOR)
+logo = cv2.imread("exercises/images_ch05/logo.jpg", cv2.IMREAD_COLOR)
 if image is None or logo is None: raise Exception("영상파일 읽기 오류")
 
 _, masks = cv2.threshold(logo, 220, 255, cv2.THRESH_BINARY)   # 로고 영상 이진화 (첫번째 변수 - boolean)

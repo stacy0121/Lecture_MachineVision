@@ -1,7 +1,7 @@
 import numpy as np, cv2
 
-image1 = cv2.imread("images_ch05/abs_test1.jpg", cv2.IMREAD_GRAYSCALE)   # 명암도 영상 읽기
-image2 = cv2.imread("images_ch05/abs_test2.jpg", cv2.IMREAD_GRAYSCALE)
+image1 = cv2.imread("exercises/images_ch05/abs_test1.jpg", cv2.IMREAD_GRAYSCALE)   # 명암도 영상 읽기
+image2 = cv2.imread("exercises/images_ch05/abs_test2.jpg", cv2.IMREAD_GRAYSCALE)
 if image1 is None or image2 is None: raise Exception("영상파일 읽기 오류")
 
 dif_img1 = cv2.subtract(image1, image2)                       # 차분 연산

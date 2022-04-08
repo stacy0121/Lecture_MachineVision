@@ -1,6 +1,6 @@
 import cv2
 
-image = cv2.imread("images_ch05/flip_test.jpg", cv2.IMREAD_COLOR)
+image = cv2.imread("exercises/images_ch05/flip_test.jpg", cv2.IMREAD_COLOR)
 if image is None: raise Exception("영상파일 읽기 오류 발생")
 
 x_axis = cv2.flip(image, 0)           # x축 기준 상하 뒤집기

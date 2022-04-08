@@ -1,8 +1,8 @@
 import sys, cv2
 
 # 알파 채널을 마스크 영상으로 이용
-src = cv2.imread('images_ch05/empireLight.jpg', cv2.IMREAD_COLOR)
-logo = cv2.imread('images_ch05/opencv-logo-white.png', cv2.IMREAD_UNCHANGED)   # 4채널
+src = cv2.imread('exercises/images_ch05/empireLight.jpg', cv2.IMREAD_COLOR)
+logo = cv2.imread('exercises/images_ch05/opencv-logo-white.png', cv2.IMREAD_UNCHANGED)   # 4채널
 
 if src is None or logo is None:
     print('Image load failed!'); sys.exit()

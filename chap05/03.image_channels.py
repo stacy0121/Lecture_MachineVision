@@ -1,6 +1,6 @@
 import cv2
 
-image = cv2.imread("images_ch05/color.jpg", cv2.IMREAD_COLOR)
+image = cv2.imread("exercises/images_ch05/color.jpg", cv2.IMREAD_COLOR)
 if image is None: raise Exception("영상파일 읽기 오류")
 if image.ndim != 3: raise Exception("컬러 영상 아님")
 

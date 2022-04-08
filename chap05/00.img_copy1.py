@@ -12,7 +12,7 @@ cv2.waitKey()
 cv2.destroyAllWindows()
 
 # 영상 복사
-img1 = cv2.imread('images_ch05/flowers.jpg')
+img1 = cv2.imread('exercises/images_ch05/flowers.jpg')
 img2 = img1                 # 레퍼런스(참조)
 img3 = img2.copy()
 img2[:,:,:] = (255,255,0)   # img1에 영향

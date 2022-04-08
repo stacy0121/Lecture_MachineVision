@@ -1,6 +1,6 @@
 import numpy as np, cv2
 
-image = cv2.imread("images_ch05/minMax.jpg", cv2.IMREAD_GRAYSCALE)
+image = cv2.imread("exercises/images_ch05/minMax.jpg", cv2.IMREAD_GRAYSCALE)
 if image is None: raise Exception("영상파일 읽기 오류")
 
 min_val, max_val, _, _ = cv2.minMaxLoc(image)   # 최솟값과 최댓값 가져오기
