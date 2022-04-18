@@ -1,6 +1,6 @@
 import numpy as np, cv2
 
-image = cv2.imread("images_ch05/color.jpg")
+image = cv2.imread("images_ch05/color.jpg", cv2.IMREAD_GRAYSCALE       )
 if image is None: raise Exception("영상파일 읽기 오류")
 
 mask = np.zeros(image.shape[:2], np.uint8)
