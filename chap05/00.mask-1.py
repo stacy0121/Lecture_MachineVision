@@ -9,7 +9,7 @@ mh,mw=mask.shape[:2]
 dh,dw=dst.shape[:2]
 print('src: ',sh,sw,'mask: ',mh,mw,'dst',dh,dw)
 
-cv2.copyTo(src,mask,dst)
+cv2.copyTo(src, mask, dst)
 
 cv2.imshow('src',src)
 cv2.imshow('dst',dst)
