@@ -1,7 +1,7 @@
 import numpy as np, cv2
 
 def on_trackbar(pos):
-    img1 = cv2.getTrackbarPos("image1", "dst")   # 트랙바가 2개이므로 각각의 현재값을 가져옴
+    img1 = cv2.getTrackbarPos("image1", "dst")                            # 트랙바가 2개이므로 각각의 현재값을 가져옴
     img2 = cv2.getTrackbarPos("image2", "dst")
 
     dst1 = cv2.addWeighted(image1, 1, image2, 0, img1)                    # 첫번째 - img1만큼 image1의 밝기 변경
@@ -9,7 +9,6 @@ def on_trackbar(pos):
     dst3 = cv2.addWeighted(image1, 0, image2, 1, img2)                    # 세번째 - img2만큼 imag2의 밝기 변경
 
     concat = np.concatenate((dst1, dst2, dst3), axis=1)                   # 행 방향으로 붙이기
-
     cv2.imshow("dst", concat)
 
 image1 = cv2.imread("add1.jpg")

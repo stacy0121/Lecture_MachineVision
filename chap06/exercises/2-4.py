@@ -16,13 +16,13 @@ image = cv2.imread("dark.JPG", cv2.IMREAD_GRAYSCALE)
 
 src = cv2.resize(image, (360, 240))                                 # 영상 크기 재조정
 dst1 = np.clip(src+30., 0, 255).astype(np.uint8)                    # 명암비 조절
-dst2 = cv2.normalize(src, None, 0, 200, cv2.NORM_MINMAX)            # 정규화
+dst2 = cv2.normalize(src, None, 0, 255, cv2.NORM_MINMAX)            # 정규화
 dst3 = cv2.equalizeHist(src)                                        # 평활화
 ## 히스토그램 계산
 hist1 = cv2.calcHist([dst1], [0], None, [256], [0, 256])
 hist2 = cv2.calcHist([dst2], [0], None, [256], [0, 256])
 hist3 = cv2.calcHist([dst3], [0], None, [256], [0, 256])
-## 정규화 및 히스토그램 그리기(함수 호출)
+## 히스토그램 그리기(함수 호출)
 hist_img1 = draw_histo(hist1)
 hist_img2 = draw_histo(hist2)
 hist_img3 = draw_histo(hist3)

@@ -16,7 +16,7 @@ src = cv2.resize(image, (360, 240))
 src = cv2.cvtColor(src, cv2.COLOR_BGR2YCrCb)                        # BGR 색공간 영상을 YCrCb 영상으로 변환
 
 ## 밝기 정보에 대한 영상 처리
-ycrcb_planes = cv2.split(src)
+ycrcb_planes = cv2.split(src)                                          # 밝기 정보를 사용하기 위해 채널 분리
 dst1 = cv2.add(ycrcb_planes[0], 30)                                    # 명암비 조절 (saturation 방식)
 dst1 = cv2.merge((dst1, ycrcb_planes[1], ycrcb_planes[2]))
 dst2 = cv2.normalize(ycrcb_planes[0], None, 0, 200, cv2.NORM_MINMAX)   # 정규화
@@ -25,7 +25,7 @@ dst3 = cv2.equalizeHist(ycrcb_planes[0])                               # 평활�
 dst3 = cv2.merge((dst3, ycrcb_planes[1], ycrcb_planes[2]))
 
 ## 히스토그램 계산
-hist1 = cv2.calcHist([dst1], [0], None, [256], [0, 256])               # 밝기 정보만 계산
+hist1 = cv2.calcHist([dst1], [0], None, [256], [0, 256])               # 밝기 정보(y채널)만 계산
 hist2 = cv2.calcHist([dst2], [0], None, [256], [0, 256])
 hist3 = cv2.calcHist([dst3], [0], None, [256], [0, 256])
 
