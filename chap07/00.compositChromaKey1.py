@@ -44,7 +44,7 @@ while True:
 
     # composit if compositFlag is True
     if compositFlag:
-        ret2, frame2 = cap2.read()
+        ret2, frame2 = cap2.read()   # 정규화, 평활화, 엣지만 저장
         if not ret2: break
         frame2 = cv2.resize(frame2,(w1,h1))
         
