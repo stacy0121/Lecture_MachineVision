@@ -8,8 +8,6 @@ if not cap1.isOpened():
     sys.exit()
 
 cap2 = cv2.VideoCapture('ocean.mp4')
-cap2.set(cv2.CAP_PROP_FRAME_WIDTH, 1280) # 가로
-cap2.set(cv2.CAP_PROP_FRAME_HEIGHT, 720) # 세로
 
 if not cap2.isOpened():
     print('video open failed')
@@ -37,7 +35,10 @@ fps = cap1.get(cv2.CAP_PROP_FPS)
 delay = int(1000/fps)
 
 # composite flag
-compositFlag = False
+compositFlag = False\
+
+## 동영상 파일 개방 및 코덱, 해상도 설정
+writer = cv2.VideoWriter("chormaKey.avi", cv2.VideoWriter_fourcc(*'DX50'), fps, (1280, 720))
 
 while True:
     ret1, frame1 = cap1.read()
@@ -47,12 +48,14 @@ while True:
     if compositFlag:
         ret2, frame2 = cap2.read()
         if not ret2: break
+        frame2 = cv2.resize(frame2, (1280, 720))
 
         # composite in HSV color table selected
         hsv = cv2.cvtColor(frame1, cv2.COLOR_BGR2HSV)
-        mask = cv2.inRange(hsv, (50,90,0), (150,255,255))
-        cv2.copyTo(frame2, mask, frame1)
+        mask = cv2.inRange(hsv, (50,120,0), (70,255,255))   # 머리카락...
+        cv2.copyTo(frame2, mask, frame1)   # frame1에 저장
 
+    writer.write(frame1)
     cv2.imshow('frame', frame1)
     key = cv2.waitKey(delay)
 
@@ -61,7 +64,6 @@ while True:
         compositFlag = not compositFlag
     elif key == 27: break
 
-# cv2.VideoWriter("chromaKey.mp4", frame2)
 cap1.release()
 cap2.release()
 cv2.destroyAllWindows()
