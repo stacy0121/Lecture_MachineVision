@@ -1,4 +1,4 @@
-import numpy as np, cv2, sys
+import cv2, sys
 
 cap = cv2.VideoCapture('me.mp4')
 if not cap.isOpened():
@@ -16,7 +16,8 @@ while True:
     if not ret1: break
     frame1 = cv2.resize(frame1, (1280, 720))
 
-    # dst = cv2.Canny(frame1, 50, 150)   # 캐니 엣지 검출
+    ## 캐니 엣지 검출
+    # dst = cv2.Canny(frame1, 50, 150)
     dst = cv2.Canny(frame1, 190, 200)    # threshold 조정
 
     writer.write(dst)
