@@ -14,7 +14,6 @@ def filter(image, mask):
             roi = image[y1:y2, x1:x2].astype('float32')
             tmp = cv2.multiply(roi, mask)
             dst[i, j] = cv2.sumElems(tmp)[0]
-
     return dst
 
 ## 회선 수행 함수 - 화소 직접 근접
@@ -36,9 +35,9 @@ def filter2(image, mask):
 image = cv2.imread("chapter7images/filter_blur.jpg", cv2.IMREAD_GRAYSCALE)
 if image is None: raise Exception("영상파일 읽기 오류")
 
-data = {1/9, 1/9, 1/9,
+data = [1/9, 1/9, 1/9,   # 블러링 마스크 원소 지정
         1/9, 1/9, 1/9,
-        1/9, 1/9, 1/9,}
+        1/9, 1/9, 1/9]
 mask = np.array(data, np.float32).reshape(3,3)
 blur1 = filter(image, mask)
 blur2 = filter2(image, mask)

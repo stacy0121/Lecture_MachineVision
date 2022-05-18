@@ -35,7 +35,7 @@ fps = cap1.get(cv2.CAP_PROP_FPS)
 delay = int(1000/fps)
 
 # composite flag
-compositFlag = False\
+compositFlag = False
 
 ## 동영상 파일 개방 및 코덱, 해상도 설정
 writer = cv2.VideoWriter("chormaKey.avi", cv2.VideoWriter_fourcc(*'DX50'), fps, (1280, 720))

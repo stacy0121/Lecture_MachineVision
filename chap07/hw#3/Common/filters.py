@@ -1,5 +1,5 @@
 import numpy as np, cv2
-## 블러링
+## 회선 수행
 def filter(image, mask):
     rows, cols = image.shape[:2]
     dst = np.zeros((rows, cols), np.float32)        # 회선 결과 행렬 저장
@@ -15,15 +15,14 @@ def filter(image, mask):
 
     return dst
 
-## 두 방향 엣지 검출 함수
 def differential(image, data1, data2):
     mask1 = np.array(data1, np.float32).reshape(3, 3)
     mask2 = np.array(data2, np.float32).reshape(3, 3)
 
-    dst1 = filter(image, mask1)
+    dst1 = filter(image, mask1)       # 회선
     dst2 = filter(image, mask2)
     dst1, dst2 = np.abs(dst1), np.abs(dst2)
-    dst = cv2.magnitude(dst1, dst2)   # 벡터 크기로 에지 강조
+    dst = cv2.magnitude(dst1, dst2)   # 벡터 크기 계산으로 에지 강조
 
     dst = np.clip(dst, 0, 255).astype('uint8')
     dst1 = np.clip(dst1, 0, 255).astype('uint8')

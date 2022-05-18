@@ -16,7 +16,7 @@ mask1 = np.array(data1, np.float32).reshape(3, 3)   # ndarray 객체 생성 및 
 mask2 = np.array(data2, np.float32)
 
 sharpen1 = filter(image, mask1)                     # 회선 수행 - 저자 구현 함수
-sharpen2 = filter(image, mask2)
+sharpen2 = filter(image, mask2)                     # float32형
 sharpen1 = cv2.convertScaleAbs(sharpen1)            # 형변환
 sharpen2 = cv2.convertScaleAbs(sharpen2)
 
