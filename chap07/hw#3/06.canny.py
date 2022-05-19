@@ -9,7 +9,7 @@ fps = cap.get(cv2.CAP_PROP_FPS)
 delay = int(1000/fps)
 
 ## 동영상 파일 개방 및 코덱, 해상도 설정
-writer = cv2.VideoWriter("canny_openCV.avi", cv2.VideoWriter_fourcc(*'DX50'), fps, (1280, 720))
+writer = cv2.VideoWriter("canny_openCV.avi", cv2.VideoWriter_fourcc(*'DIVX'), fps, (1280, 720))
 
 while True:
     ret1, frame1 = cap.read()

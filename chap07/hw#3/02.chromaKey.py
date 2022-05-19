@@ -38,7 +38,7 @@ delay = int(1000/fps)
 compositFlag = False
 
 ## 동영상 파일 개방 및 코덱, 해상도 설정
-writer = cv2.VideoWriter("chormaKey.avi", cv2.VideoWriter_fourcc(*'DX50'), fps, (1280, 720))
+writer = cv2.VideoWriter("chormaKey.avi", cv2.VideoWriter_fourcc(*'DIVX'), fps, (1280, 720))
 
 while True:
     ret1, frame1 = cap1.read()
@@ -52,6 +52,7 @@ while True:
 
         # composite in HSV color table selected
         hsv = cv2.cvtColor(frame1, cv2.COLOR_BGR2HSV)
+        # mask = cv2.inRange(hsv, (50, 150, 0), (150, 255, 255))
         mask = cv2.inRange(hsv, (50,120,0), (70,255,255))   # 머리카락...
         cv2.copyTo(frame2, mask, frame1)   # frame1에 저장
 
