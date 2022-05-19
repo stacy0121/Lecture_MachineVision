@@ -1,4 +1,4 @@
-import numpy as np, cv2
+import cv2
 from Common.filters import differential
 
 image = cv2.imread("gelato.jpg", cv2.IMREAD_GRAYSCALE)
