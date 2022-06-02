@@ -17,7 +17,7 @@ def nonmax_suppression(sobel, direct):
 def trace(max_sobel, i, j, low):
     h, w = max_sobel.shape
     if (0<=i<g and 0<=j<w) == False: return
-    if pos_ck[i, j] >0 and max_sobel[[i,j]>low:
+    if pos_ck[i, j]>0 and max_sobel[i,j]>low:
         pos_ck[i, j] = 255
         canny[i, j] = 255
 
@@ -35,3 +35,25 @@ def hysteresis_th(max_sobel, low, high):
             for j in range(1, cols-1):
                 if max_sobel[i, j]>=high: trace(max_sobel, i, j, low)
 
+image = cv2.imread("chapter7images/canny.jpg", cv2.IMREAD_GRAYSCALE)
+if image is None: raise Exception("영상파일 읽기 오류")
+
+pos_ck = np.zeros(image.shape[:2], np.uint8)   # 추적 완료 점검 행렬
+canny = np.zeros(image.shape[:2], np.uint8)    # 캐니 에지 행렬
+
+## 캐니 에지 검출
+gaus_img = cv2.GaussianBlur(image, (5, 5), 0.3)
+Gx = cv2.Sobel(np.float32(gaus_img), cv2.CV_32F, 1, 0, 3)   # x축
+Gy = cv2.Sobel(np.float32(gaus_img), cv2.CV_32F, 0, 1, 3)   # y축
+sobel = cv2.magnitude(Gx, Gy)
+
+directs = cv2.phase(Gx, Gy)/(np.pi/4)
+directs = directs.astype(int)%4
+max_sobel = nonmax_suppression(sobel, directs)
+
+canny2 = cv2.Canny(image, 100, 150)
+
+cv2.imshow("image", image)
+cv2.imshow("canny", canny)
+cv2.imshow("OpenCV_Canny", canny2)
+cv2.waitKey()

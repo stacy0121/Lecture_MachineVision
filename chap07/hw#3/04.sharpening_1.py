@@ -13,7 +13,7 @@ data = [0, -1, 0,
 mask = np.array(data, np.float32).reshape(3, 3)   # ndarray 객체 생성 및 형태 변경
 
 sharpen = filter(image, mask)                     # 회선 수행 - 저자 구현 함수
-sharpen1 = cv2.convertScaleAbs(sharpen)            # 형변환
+sharpen1 = cv2.convertScaleAbs(sharpen)           # 형변환
 
 cv2.imshow("image", image)
 cv2.imshow("sharpen", sharpen1)

@@ -10,9 +10,9 @@ if src is None:
     print('Image load failed')
     sys.exit()
 
-dst1 = cv2.normalize(src, None, 0, 255, cv2.NORM_MINMAX)
-dst2 = cv2.equalizeHist(src)
-dhist1 = cv2.calcHist([dst1], [0], None, [256], [0, 256])
+dst1 = cv2.normalize(src, None, 0, 255, cv2.NORM_MINMAX)    # 정규화
+dst2 = cv2.equalizeHist(src)                                # 평활화
+dhist1 = cv2.calcHist([dst1], [0], None, [256], [0, 256])   # 픽셀 분포도(히스토그램) 그리기
 dhist2 = cv2.calcHist([dst2], [0], None, [256], [0, 256])
 
 cv2.imshow("src", src)
