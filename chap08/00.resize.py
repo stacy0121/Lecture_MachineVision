@@ -1,10 +1,11 @@
-import numpy as np, sys, cv2
+import sys, cv2
 
-src = cv2.imread('chapter7images/sheep.jpg')
+src = cv2.imread('images/sheep.jpg')
 print(src.shape[:2])
 
 if src is None: print('Image load failed'); sys.exit()
 
+# 5배로 영상 크기 조절(scaling)
 dst1 = cv2.resize(src, (0, 0), fx=5, fy=5, interpolation=cv2.INTER_NEAREST)
 dst2 = cv2.resize(src, (2400, 1600))
 dst3 = cv2.resize(src, (2400, 1600), interpolation=cv2.INTER_CUBIC)
