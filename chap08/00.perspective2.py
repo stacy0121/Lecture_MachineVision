@@ -1,7 +1,7 @@
 # 투시 변환으로 비뚤어진 문서 펴기
 import numpy as np, cv2, sys
 
-def drawROI(img, corners):   # call by reference?
+def drawROI(img, corners):   # call by reference
     cpy = img.copy()
 
     c1 = (192, 192, 255)   # color
@@ -24,7 +24,7 @@ def onMouse(event, x, y, flags, param):
 
     if event == cv2.EVENT_LBUTTONDOWN:
         for i in range(4):
-            if cv2.norm(srcQuad[i] - (x, y)) < 25:
+            if cv2.norm(srcQuad[i] - (x, y)) < 25:   # 마우스 좌표가 어떤 원 안에 있을 때
                 dragSrc[i] = True
                 ptOld = (x, y)
                 break
@@ -35,8 +35,8 @@ def onMouse(event, x, y, flags, param):
 
     if event == cv2.EVENT_MOUSEMOVE:
         for i in range(4):
-            if dragSrc[i]:          # 클릭해서 움직이고 있으면
-                dx = x - ptOld[0]   # 움직인 거리
+            if dragSrc[i]:          # 움직이는 원
+                dx = x - ptOld[0]   # 현재 좌표 - 최초 눌렀을 때 x좌표
                 dy = y - ptOld[1]
 
                 srcQuad[i] += (dx, dy)        # 좌표 이동
@@ -73,3 +73,8 @@ while True:
     elif key == 27:   # ESC 키
         cv2.destroyAllWindows('img')
         sys.exit()
+
+pers = cv2.getPerspectiveTransform(srcQuad, dstQuad)
+dst = cv2.warpPerspective(src, pers, (dw, dh), flags=cv2.INTER_CUBIC)
+cv2.imshow('dst', dst)
+cv2.waitKey()
