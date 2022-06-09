@@ -5,7 +5,7 @@ def onTrackbar(th):
     dst = cv2.warpAffine(src, rot, (0, 0))  # affine 변환(Rotation)
     cv2.imshow('video_effect', dst)
 
-src = cv2.imread("ocean.jpg")
+src = cv2.imread("hill.jpg")
 if src is None: print('Image load failed!'); sys.exit()
 src = cv2.resize(src, (480, 320))   # resize (INTER_LINEAR)
 
