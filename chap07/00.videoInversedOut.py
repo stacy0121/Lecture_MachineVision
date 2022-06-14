@@ -1,3 +1,4 @@
+#1 카메라 프레임을 동영상 파일로 저장
 import cv2, sys
 cap = cv2.VideoCapture(0)
 

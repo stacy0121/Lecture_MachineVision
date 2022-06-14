@@ -1,4 +1,5 @@
-import numpy as np, sys, cv2
+#3 동영상 합성(크로마키)
+import sys, cv2
 
 # green screen mp4 file
 cap1 = cv2.VideoCapture('bomb.mp4')
